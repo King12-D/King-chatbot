@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KING-AI Chatbot</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-white dark:from-gray-900 dark:to-black transition-all duration-500">
+
+  <!-- Welcome Screen -->
+  <section id="landing" class="min-h-screen flex flex-col justify-center items-center text-center px-4">
+    <img src="bot.jpg" alt="Bot Logo" class="w-24 h-24 rounded-full shadow-lg animate-bounce" />
+    <h1 class="text-3xl font-bold text-blue-700 dark:text-white mt-4 animate-fade-in">Welcome to KING-AI</h1>
+    <p class="text-gray-600 dark:text-gray-300 mt-2 animate-fade-in delay-200">KING AI can make mistakes. Consider verifying important info.</p>
+    <button id="startChat" class="mt-6 px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+      Start Chat
+    </button>
+  </section>
+
+  <!-- Chat UI -->
+  <main id="chatUI" class="hidden flex flex-col min-h-screen">
+    <header class="flex items-center justify-between px-2 py-3 shadow bg-blue dark:bg-gray-800">
+      <div class="flex items-center space-x-10 flex-direction:column display:flex text-align:center">
+        <img src="bot.jpg" class="h-10 w-10 rounded-full flex-direction:column justify-center px-12 py-4 display:flex"/>
+        <h1 class="text-xl font-bold text-blue-800 dark:text-white display:flex flex-direction:column">KING-AI</h1>
+      </div>
+      <div class="flex gap-2">
+        <input type="file" id="imageUpload" class="hidden" accept="image/*" />
+        <label for="imageUpload" class="cursor-pointer px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"> 📤</label>
+        <button id="themeToggle" class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded">dark</button>        
+      </div>
+    </header>
+
+    <section id="chatbox" class="flex-1 overflow-y-auto p-4 space-y-4 bg-white dark:bg-gray-900"></section>
+
+    <footer id="chatFooter" class="bg-white dark:bg-gray-800 px-4 py-3 shadow-inner fixed bottom-0 left-0 right-0 z-10 hidden">
+      <div class="max-w-3xl mx-auto flex items-center space-x-2">
+        <input id="messageInput" type="text" placeholder="Type a message..."
+          class="flex-1 px-4 py-2 rounded border border-gray-300 dark:bg-gray-700 dark:text-white focus:outline-none" />
+        <button id="sendButton" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+        <button id="clearButton" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Clear</button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Sound Effects -->
+  <audio id="sendSound" preload="auto">
+    <source src="sounds/send-sound.mp3" type="audio/mp3">
+    <source src="sounds/send-sound.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="receiveSound" preload="auto">
+    <source src="sounds/receive-sound.mp3" type="audio/mp3">
+    <source src="sounds/receive-sound.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
